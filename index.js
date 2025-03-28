@@ -16,7 +16,7 @@ const app = express()
 //     credentials: true
 // }))
 const corsOption = {
-    origin: ["http://localhost:3000","https://todo-list-fe-iota.vercel.app"],
+    origin: ["https://todo-list-fe-iota.vercel.app"],
     credentials: true
 }
 
