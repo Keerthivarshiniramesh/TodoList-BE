@@ -16,7 +16,7 @@ const app = express()
 //     credentials: true
 // }))
 const corsOption = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000","https://todo-list-fe-iota.vercel.app"],
     credentials: true
 }
 
@@ -25,6 +25,7 @@ app.use(cors(corsOption))
 // data fetch from front End
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.set("trust proxy", 1)
 
 
 //connect mongoDb and backEnd
@@ -44,7 +45,13 @@ app.use(session({
     saveUninitialized: false,
     store: stores,
     resave: false,
-    secret: process.env.key
+    secret: process.env.key,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none'
+    }
+
 }))
 
 
